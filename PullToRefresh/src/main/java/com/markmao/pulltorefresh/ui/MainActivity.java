@@ -10,15 +10,17 @@ import com.markmao.pulltorefresh.R;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    private Button listBrn;
+    private Button scrollBrn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
 
-        Button listBrn = (Button) findViewById(R.id.list_view_btn);
+        listBrn = (Button) findViewById(R.id.list_view_btn);
         listBrn.setOnClickListener(this);
-
-        Button scrollBrn = (Button) findViewById(R.id.scroll_view_btn);
+        scrollBrn = (Button) findViewById(R.id.scroll_view_btn);
         scrollBrn.setOnClickListener(this);
     }
 
@@ -31,14 +33,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.list_view_btn:
-                XListViewActivity.launch(this);
-                break;
-
-            case R.id.scroll_view_btn:
-                XScrollViewActivity.launch(this);
-                break;
+        if (v == listBrn) {
+            XListViewActivity.launch(this);
+        }
+        else if (v == scrollBrn) {
+            XScrollViewActivity.launch(this);
         }
     }
 }
